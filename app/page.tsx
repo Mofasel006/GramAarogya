@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const translations = [
   { lang: "বাংলা", text: "মা সাথী এআই" },
@@ -19,7 +20,11 @@ function FloatingPaths({ position }: { position: number }) {
 
   return (
     <div className="absolute inset-0 pointer-events-none">
-      <svg className="w-full h-full text-slate-950 dark:text-white" viewBox="0 0 696 316" fill="none">
+      <svg
+        className="w-full h-full text-slate-950 dark:text-white"
+        viewBox="0 0 696 316"
+        fill="none"
+      >
         <title>Background Paths</title>
         {paths.map((path) => (
           <motion.path
@@ -57,53 +62,141 @@ export default function BackgroundPaths() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+    <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950">
+      {/* Floating background paths */}
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+      {/* Subtle gradient orbs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-purple-500/10 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-pink-500/8 blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 md:px-6 min-h-screen flex flex-col lg:flex-row items-center justify-center gap-12 py-16">
+
+        {/* Left: Text Content */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tighter">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/40 px-4 py-1.5 text-sm font-medium text-purple-700 dark:text-purple-300"
+          >
+            <span className="h-2 w-2 rounded-full bg-purple-500 animate-pulse" />
+            AI-Powered Maternal Care
+          </motion.div>
+
+          {/* Main Title */}
+          <h1 className="mb-3 font-bold tracking-tight text-neutral-900 dark:text-white" style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", lineHeight: 1.1 }}>
             <motion.span
               key={index}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.8 }}
-              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400"
-              style={{ fontSize: "72px" }}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400"
             >
               {translations[index].text}
             </motion.span>
           </h1>
 
-          <div
-            className="inline-block group relative bg-gradient-to-b from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="mb-6 text-xl sm:text-2xl font-semibold text-neutral-700 dark:text-neutral-300 leading-relaxed"
           >
-            <Link href="/hero">
-              <Button
-                variant="ghost"
-                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-purple-600 dark:text-purple-400 transition-all duration-300 group-hover:-translate-y-0.5 border border-purple-500/20 hover:shadow-md dark:hover:shadow-purple-800/50"
-              >
-                <span className="opacity-90 group-hover:opacity-100 transition-opacity">শুরু করুন</span>
-                <span
-                  className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300"
+            মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত
+          </motion.p>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="mb-8 text-base text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-md"
+          >
+            গর্ভাবস্থা থেকে মাতৃত্ব — আমরা আছি আপনার পাশে। তাৎক্ষণিক এআই স্বাস্থ্য পরামর্শ, ঝুঁকি নির্ণয় এবং বিশেষজ্ঞ সংযোগ।
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="flex flex-wrap justify-center lg:justify-start gap-3"
+          >
+            <div className="group relative bg-gradient-to-b from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Link href="/hero">
+                <Button
+                  variant="ghost"
+                  className="rounded-[1.15rem] px-7 py-5 text-base font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-purple-600 dark:text-purple-400 transition-all duration-300 group-hover:-translate-y-0.5 border border-purple-500/20 hover:shadow-md"
                 >
-                  →
-                </span>
+                  <span className="opacity-90 group-hover:opacity-100 transition-opacity">শুরু করুন</span>
+                  <span className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300">
+                    →
+                  </span>
+                </Button>
+              </Link>
+            </div>
+            <Link href="/health-check">
+              <Button
+                variant="outline"
+                className="rounded-2xl px-7 py-5 text-base font-semibold border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-950/30 transition-all duration-300"
+              >
+                স্বাস্থ্য পরীক্ষা
               </Button>
             </Link>
+          </motion.div>
+
+          {/* Trust indicators */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-8 flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-neutral-500 dark:text-neutral-400"
+          >
+            {["WHO Aligned", "GDPR Compliant", "30% Risk Reduction"].map((item) => (
+              <span key={item} className="flex items-center gap-1.5">
+                <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
+                {item}
+              </span>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Right: Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="flex-1 w-full max-w-lg xl:max-w-xl"
+        >
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-purple-100 dark:border-purple-900/30 bg-white dark:bg-neutral-900">
+            {/* Decorative top bar */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500" />
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PSHrMbZGsmnlffL4eyCirTOsGaxZ1P.png"
+              alt="MaaSathi AI - মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত"
+              width={800}
+              height={1000}
+              className="w-full h-auto object-contain"
+              priority
+            />
           </div>
         </motion.div>
+
       </div>
     </div>
   );
 }
-
