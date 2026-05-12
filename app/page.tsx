@@ -172,16 +172,16 @@ export default function BackgroundPaths() {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="flex-1 w-full max-w-lg xl:max-w-xl"
+          className="flex-1 w-full max-w-2xl xl:max-w-3xl"
         >
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-purple-100 dark:border-purple-900/30 bg-white dark:bg-neutral-900">
             {/* Decorative top bar */}
             <div className="h-1.5 w-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500" />
             <Image
-              src="/logo.svg"
-              alt="MaaSathi AI"
-              width={800}
-              height={1000}
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-A68SVvXPLSWZ5zqj760i1D9EhVLA6c.png"
+              alt="MaaSathi AI - AI-Powered Care for Every Mother, Everywhere"
+              width={1200}
+              height={1600}
               className="w-full h-auto object-contain"
               priority
             />
