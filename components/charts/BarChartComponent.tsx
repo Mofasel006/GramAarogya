@@ -3,11 +3,11 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 const data = [
-  { indicator: "Access to Improved Sanitation", urban: 93, rural: 64 },
-  { indicator: "Institutional Births", urban: 94.7, rural: 87.2 },
-  { indicator: "Full Immunization Coverage", urban: 77, rural: 73 },
-  { indicator: "Stunting in Children", urban: 31, rural: 41 },
-  { indicator: "Obesity in Women", urban: 31.3, rural: 15 },
+  { indicator: "উন্নত স্যানিটেশন সুবিধা", urban: 90, rural: 65 },
+  { indicator: "প্রাতিষ্ঠানিক প্রসব", urban: 85, rural: 60 },
+  { indicator: "সম্পূর্ণ টিকাদান", urban: 92, rural: 88 },
+  { indicator: "শিশুদের খর্বকায়তা (Stunting)", urban: 28, rural: 35 },
+  { indicator: "মাতৃত্বকালীন পুষ্টি", urban: 75, rural: 65 },
 ]
 
 export default function BarChartComponent() {
@@ -16,11 +16,11 @@ export default function BarChartComponent() {
       <BarChart data={data} layout="vertical" margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" />
-        <YAxis dataKey="indicator" type="category" width={150} />
+        <YAxis dataKey="indicator" type="category" width={150} tick={{ fontSize: 10 }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="urban" fill="#8884d8" name="Urban" />
-        <Bar dataKey="rural" fill="#82ca9d" name="Rural" />
+        <Bar dataKey="urban" fill="#9333ea" name="শহর" />
+        <Bar dataKey="rural" fill="#ec4899" name="গ্রাম" />
       </BarChart>
     </ResponsiveContainer>
   )

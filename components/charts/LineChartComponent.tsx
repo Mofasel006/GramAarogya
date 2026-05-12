@@ -3,13 +3,11 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts"
 
 const data = [
-  { year: 1960, lifeExpectancy: 41.17 },
-  { year: 1970, lifeExpectancy: 47.72 },
-  { year: 1980, lifeExpectancy: 54.21 },
-  { year: 1990, lifeExpectancy: 58.37 },
-  { year: 2000, lifeExpectancy: 62.34 },
-  { year: 2010, lifeExpectancy: 66.69 },
-  { year: 2020, lifeExpectancy: 69.66 },
+  { year: 1990, lifeExpectancy: 58 },
+  { year: 2000, lifeExpectancy: 65 },
+  { year: 2010, lifeExpectancy: 70 },
+  { year: 2020, lifeExpectancy: 73 },
+  { year: 2023, lifeExpectancy: 74 },
 ]
 
 export default function LineChartComponent() {
@@ -29,7 +27,7 @@ export default function LineChartComponent() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="lifeExpectancy" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Line type="monotone" dataKey="lifeExpectancy" stroke="#ec4899" activeDot={{ r: 8 }} name="গড় আয়ু" />
       </LineChart>
     </ResponsiveContainer>
   )

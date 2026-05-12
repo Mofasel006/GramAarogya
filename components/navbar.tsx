@@ -4,149 +4,126 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { ChevronDown, ChevronUp } from "lucide-react" // Icons for dropdown
 
-const translations = [
-  { lang: "English", text: "GramAarogya" },
-  { lang: "हिन्दी", text: "ग्रामआरोग्य" },
-  { lang: "ગુજરાતી", text: "ગ્રામઆરોગ્ય" },
-  { lang: "বাংলা", text: "গ্রামআরোগ্য" },
-  { lang: "मराठी", text: "ग्रामआरोग्य" },
-  { lang: "தமிழ்", text: "கிராமாரோக்கிய" },
-]
-
-const greetings = [
-  { lang: "English", text: "Hello" },
-  { lang: "हिन्दी", text: "नमस्ते" },
-  { lang: "ગુજરાતી", text: "નમસ્તે" },
-  { lang: "বাংলা", text: "নমস্কার" },
-  { lang: "मराठी", text: "नमस्कार" },
-  { lang: "தமிழ்", text: "வணக்கம்" },
-]
+import { HeartPulse, Menu, X } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { AnimatePresence, motion } from "framer-motion"
+import { Button } from "./ui/button"
 
 export default function Navbar() {
-  const [indexLeft, setIndexLeft] = useState(0)
-  const [indexRight, setIndexRight] = useState(0)
-  const [dropdownOpen, setDropdownOpen] = useState(false) // Controls dropdown expansion
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
-    const intervalLeft = setInterval(() => {
-      setIndexLeft((prevIndex) => (prevIndex + 1) % translations.length)
-    }, 3000)
-
-    const intervalRight = setInterval(() => {
-      setIndexRight((prevIndex) => (prevIndex + 1) % greetings.length)
-    }, 3000)
-
-    return () => {
-      clearInterval(intervalLeft)
-      clearInterval(intervalRight)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
     }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-lg">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Left Side: Animated GramAarogya */}
-        <div className="flex items-center space-x-2">
-          <Link href="/hero" className="mr-6 flex items-center">
-            <span className="text-xl font-bold italic transition-all duration-1000 sm:text-2xl lg:text-3xl">
-              {translations[indexLeft].text}
-            </span>
-          </Link>
-        </div>
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${scrolled
+        ? "bg-background/80 backdrop-blur-md border-b border-purple-100 dark:border-purple-900/30 py-3"
+        : "bg-transparent py-5"
+        }`}
+    >
+      <div className="container flex items-center justify-between">
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="w-9 h-9 bg-purple-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform shadow-md shadow-purple-500/20">
+            <HeartPulse className="text-white h-5 w-5" />
+          </div>
+          <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+            মা সাথী এআই
+          </span>
+        </Link>
 
         {/* Desktop Navbar Links */}
-        <nav className="hidden sm:flex flex-1 items-center justify-center space-x-4 sm:space-x-6 text-sm font-medium">
-          <Link href="/health-check" className="transition-colors hover:text-primary">
-            AarogyaMitraAI
+        <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium">
+          <Link href="/health-check" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্য এআই
           </Link>
-          <Link href="/find-doctor" className="transition-colors hover:text-primary">
-            AarogyaConnect
+          <Link href="/find-doctor" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্যকানেক্ট
           </Link>
-          <Link href="/g-map" className="transition-colors hover:text-primary">
-            AarogyaMap
+          <Link href="/g-map" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্যম্যাপ
           </Link>
-          <Link href="/news-help" className="transition-colors hover:text-primary">
-            AarogyaPulse
+          <Link href="/news-help" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্যপালস
           </Link>
-          <Link href="/health-insights" className="transition-colors hover:text-primary">
-            AarogyaView
-          </Link>
-          <Link href="/our-team" className="transition-colors hover:text-primary">
-            AarogyaParivar
+          <Link href="/health-insights" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্যভিউ
           </Link>
         </nav>
 
-        {/* Mobile Dropdown (Single Visible Option) */}
-        <div className="relative sm:hidden flex flex-1 justify-center">
+        <div className="flex items-center space-x-4">
+          <Button
+            className="hidden sm:flex bg-purple-600 hover:bg-purple-700 text-white rounded-full px-6"
+            onClick={() => router.push("/health-check")}
+          >
+            শুরু করুন
+          </Button>
+
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="text-base md:text-lg font-medium flex items-center space-x-2 border rounded-lg px-3 py-1.5 md:px-4 md:py-2 bg-dark text-white"
-            aria-expanded={dropdownOpen}
-            aria-controls="mobile-menu"
+            className="lg:hidden p-2 text-muted-foreground hover:text-purple-600 transition-colors"
           >
-            <span>Menu</span>
-            {dropdownOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            {dropdownOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-
-          {dropdownOpen && (
-            <div
-              id="mobile-menu"
-              className="absolute top-12 left-1/2 transform -translate-x-1/2 w-[90%] bg-gray-900 shadow-lg rounded-lg text-center py-3 border border-gray-700 z-50"
-            >
-              <Link
-                href="/health-check"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaMitraAI
-              </Link>
-              <Link
-                href="/find-doctor"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaConnect
-              </Link>
-              <Link
-                href="/g-map"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaMap
-              </Link>
-              <Link
-                href="/news-help"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaPulse
-              </Link>
-              <Link
-                href="/health-insights"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaView
-              </Link>
-              <Link
-                href="/our-team"
-                className="block py-2 text-base font-medium hover:text-primary transition"
-                onClick={() => setDropdownOpen(false)}
-              >
-                AarogyaParivar
-              </Link>
-            </div>
-          )}
-        </div>
-
-        {/* Right Side: Animated Hello (Now Visible on Mobile Too) */}
-        <div className="flex items-center space-x-4">
-          <span className="text-lg font-bold italic transition-all duration-1000 sm:text-xl lg:text-2xl">
-            {greetings[indexRight].text}
-          </span>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {dropdownOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-background border-b border-purple-100 dark:border-purple-900/30 overflow-hidden"
+          >
+            <div className="container py-6 flex flex-col space-y-4">
+              <Link href="/health-check" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্য এআই
+              </Link>
+              <Link href="/find-doctor" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্যকানেক্ট
+              </Link>
+              <Link href="/g-map" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্যম্যাপ
+              </Link>
+              <Link href="/news-help" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্যপালস
+              </Link>
+              <Link href="/health-insights" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্যভিউ
+              </Link>
+              <Button
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-full py-6 mt-4"
+                onClick={() => {
+                  router.push("/health-check")
+                  setDropdownOpen(false)
+                }}
+              >
+                শুরু করুন
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
+
+// Remove the old unused translations
+const translations = [
+  { lang: "বাংলা", text: "মা সাথী এআই" },
+]
+
+const greetings = [
+  { lang: "বাংলা", text: "স্বাগতম" },
+]
 

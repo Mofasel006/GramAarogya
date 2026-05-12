@@ -27,46 +27,46 @@ export default function AboutUs() {
     // Mock data for demonstration
     const mockArticles = [
       {
-        title: "पोषक तत्वों का भंडार, स्वास्थ्य के लिए उत्तम",
+        title: "পুষ্টির ভাণ্ডার, স্বাস্থ্যের জন্য সেরা",
         description:
-          "मूंगफली का पोषण, स्वास्थ्य लाभ, एंटीऑक्सिडेंट, हृदय स्वास्थ्य, मस्तिष्क स्वास्थ्य, रक्त शर्करा, फाइबर, विटामिन, खनिज, स्वस्थ नाश्ता",
+          "চিনাবাদামের পুষ্টি, স্বাস্থ্য সুবিধা, অ্যান্টিঅক্সিডেন্ট, হৃদরোগের স্বাস্থ্য, মস্তিষ্কের স্বাস্থ্য, রক্তে শর্করা, ফাইবার, ভিটামিন, খনিজ, স্বাস্থ্যকর স্ন্যাকস",
         content:
-          "Meta AI द्वारा जनरेट की गई प्रस्तुति छवि\n● मूंगफली में प्रोटीन और फाइबर प्रचुर मात्रा में होते हैं, जो शरीर को ऊर्जा प्रदान करते हैं और भूख को कम करते हैं।",
+          "Meta AI দ্বারা তৈরি চিত্র\n● চিনাবাদামে প্রচুর প্রোটিন এবং ফাইবার থাকে, যা শরীরকে শক্তি দেয় এবং ক্ষুধা কমায়।",
         url: "https://www.kvartha.com/health/nilakkadala-poshakangal/cid16320742.htm",
-        source: "केवारथा | KVARTHA.COM",
+        source: "কেওয়ারথা | KVARTHA.COM",
         publishedAt: "2025-03-05T05:43:54Z",
       },
       {
-        title: "भारत में स्वाइन फ्लू का कहर! देश की राजधानी में मिले 3000 से ज्यादा मामले, जानें बचाव के आसान उपाय",
+        title: "ভারতে সোয়াইন ফ্লুর প্রকোপ! দেশের রাজধানীতে ৩০০০-এর বেশি আক্রান্ত, জানুন বাঁচার সহজ উপায়",
         description:
-          "Swine Flu Cases In Delhi: स्वाइन फ्लू वायरस के मामले दिल्ली में काफी तेजी से बढ़ते जा रहे हैं। वहीं इसके मामले और भी बढ़ने की काफी संभावना बनती जा रही है। आइए जानते हैं क्या है ये वायरस और कैसे करें इससे बचाव?",
+          "Swine Flu Cases In Delhi: দিল্লিতে সোয়াইন ফ্লু ভাইরাস দ্রুত ছড়িয়ে পড়ছে। এই ভাইরাসের সংক্রমণ আরও বাড়ার সম্ভাবনা রয়েছে। জানুন এই ভাইরাসটি কী এবং কীভাবে এটি থেকে নিজেকে রক্ষা করবেন?",
         content:
-          "swine flu cases\nSwine Flu Cases: भारत में स्वाइन फ्लू के मामले काफी तेजी से बढ़ते जा रहे हैं। देश की राजधानी दिल्ली में इसके 3000 से ज्यादा मामले दर्ज किए जा चुके हैं।",
+          "swine flu cases\nSwine Flu Cases: ভারতে সোয়াইন ফ্লুর প্রকোপ দ্রুত বাড়ছে। দেশের রাজধানী দিল্লিতে ৩০০০-এর বেশি আক্রান্তের খবর পাওয়া গেছে।",
         url: "https://www.timesnowhindi.com/health/swine-flu-cases-in-delhi-reported-thousand-of-cases-in-swine-flu-know-prevention-tips-in-hindi-article-118724073",
         source: "Times Now Navbharat",
         publishedAt: "2025-03-05T04:32:07Z",
       },
       {
-        title: "वेट ट्रेनिंग के लिए टिप्स,- Weight training ke liye tips",
+        title: "ওয়েট ট্রেনিংয়ের টিপস",
         description:
-          "एक्सरसाइज़ के दौरान सतर्कता न बरतने से अक्सर मांसपेशियों में खिंचाव की समस्या बनी रहती हैं। ऐसे में फिटनेस के स्तर और उम्र के आधार पर व्यायाम में अलग अलग बदलाव होने आवश्यक है।",
+          "ব্যায়ামের সময় সতর্কতা অবলম্বন না করলে পেশিতে টানের সমস্যা হতে পারে। ফিটনেস লেভেল এবং বয়সের ভিত্তিতে ব্যায়ামে বিভিন্ন পরিবর্তন আনা প্রয়োজন।",
         content:
-          "एक्सरसाइज़ के दौरान सतर्कता न बरतने से अक्सर मांसपेशियों में खिंचाव की समस्या बनी रहती हैं। ऐसे में फिटनेस के स्तर और उम्र के आधार पर व्यायाम में अलग अलग बदलाव होने आवश्यक है।",
+          "ব্যায়ামের সময় সতর্কতা অবলম্বন না করলে পেশিতে টানের সমস্যা হতে পারে। ফিটনেস লেভেল এবং বয়সের ভিত্তিতে ব্যায়ামে বিভিন্ন পরিবর্তন আনা প্রয়োজন।",
         url: "https://www.healthshots.com/hindi/fitness/weight-training-things-to-remember-to-avoid-injuries/",
         source: "Healthshots Hindi",
         publishedAt: "2025-03-05T02:30:37Z",
       },
     ]
 
-    const mockSummary = `स्वास्थ्य समाचार लेखों का सारांश (4-5 मार्च, 2025)
+    const mockSummary = `স্বাস্থ্য সংবাদ নিবন্ধের সারাংশ (৪-৫ মার্চ, ২০২৫)
 
-यह सारांश दिए गए समाचार लेखों से प्रमुख स्वास्थ्य रुझानों और चिकित्सा निहितार्थों को उजागर करता है।
+এই সারাংশটি প্রদত্ত সংবাদ নিবন্ধগুলি থেকে প্রধান স্বাস্থ্য প্রবণতা এবং চিকিৎসা সংক্রান্ত প্রভাবগুলিকে তুলে ধরে।
 
-I. संक्रामक रोगों का प्रकोप:
+I. সংক্রামক রোগের প্রকোপ:
 
-* टेक्सास में खसरा का प्रकोप: टेक्सास में खसरे का एक महत्वपूर्ण प्रकोप हो रहा है, जिसके कारण सीडीसी ने एक प्रतिक्रिया दल भेजा है।
-* दिल्ली में स्वाइन फ्लू: दिल्ली में स्वाइन फ्लू के 3000 से अधिक मामले सामने आए हैं, जो संक्रमण में चिंताजनक वृद्धि का संकेत देते हैं।
-* केरल में निपाह वायरस अलर्ट: फल चमगादड़ के संभोग के मौसम के कारण पांच केरल जिलों के अस्पताल निपाह वायरस के लिए अलर्ट पर हैं।`
+* টেক্সাসে হামের প্রকোপ: টেক্সাসে হামের উল্লেখযোগ্য প্রকোপ দেখা দিয়েছে, যার কারণে সিডিসি একটি প্রতিক্রিয়া দল পাঠিয়েছে।
+* দিল্লিতে সোয়াইন ফ্লু: দিল্লিতে ৩০০০-এর বেশি সোয়াইন ফ্লু আক্রান্তের খবর পাওয়া গেছে, যা সংক্রমণের উদ্বেগজনক বৃদ্ধির ইঙ্গিত দেয়।
+* কেরালাতে নিপাহ ভাইরাস অ্যালার্ট: ফ্রুট ব্যাটের প্রজনন ঋতুর কারণে কেরালার পাঁচটি জেলার হাসপাতাল নিপাহ ভাইরাসের জন্য সতর্ক অবস্থানে রয়েছে।`
 
     setArticles(mockArticles)
     setSummary(mockSummary)
@@ -75,7 +75,7 @@ I. संक्रामक रोगों का प्रकोप:
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
-    return new Intl.DateTimeFormat("hi-IN", {
+    return new Intl.DateTimeFormat("bn-IN", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -85,30 +85,30 @@ I. संक्रामक रोगों का प्रकोप:
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-black dark:bg-black text-white">
       <Navbar />
       <main className="container mx-auto px-4 py-12">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent"
         >
-          स्वास्थ्य समाचार अपडेट
+          স্বাস্থ্য সংবাদ আপডেট
         </motion.h1>
 
         {isLoading && (
           <div className="text-center py-12">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-            <p className="mt-4 text-lg">समाचार लोड हो रहे हैं...</p>
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-purple-600 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
+            <p className="mt-4 text-lg text-gray-300">সংবাদ লোড হচ্ছে...</p>
           </div>
         )}
 
         {error && (
           <div className="text-center py-12">
             <p className="text-red-500 text-lg">{error}</p>
-            <Button onClick={() => window.location.reload()} className="mt-4">
-              पुनः प्रयास करें
+            <Button onClick={() => window.location.reload()} className="mt-4 bg-purple-600 hover:bg-purple-700">
+              আবার চেষ্টা করুন
             </Button>
           </div>
         )}
@@ -123,24 +123,24 @@ I. संक्रामक रोगों का प्रकोप:
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full flex flex-col">
+                  <Card className="h-full flex flex-col border-purple-900/30 bg-gray-900/50">
                     <CardHeader className="p-3 sm:p-6">
-                      <CardTitle className="text-base sm:text-lg md:text-xl">{article.title}</CardTitle>
-                      <CardDescription className="text-xs sm:text-sm">
+                      <CardTitle className="text-base sm:text-lg md:text-xl text-purple-400">{article.title}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm text-gray-400">
                         {formatDate(article.publishedAt)}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="flex-grow p-3 sm:p-6 pt-0 sm:pt-0">
-                      <p className="mb-2 sm:mb-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                      <p className="mb-2 sm:mb-4 text-xs sm:text-sm text-gray-400">
                         {article.description}
                       </p>
-                      <p className="text-xs sm:text-sm line-clamp-3">{article.content}</p>
+                      <p className="text-xs sm:text-sm line-clamp-3 text-gray-300">{article.content}</p>
                     </CardContent>
                     <CardFooter className="flex justify-between items-center p-3 sm:p-6">
                       <span className="text-xs text-gray-500">{article.source}</span>
-                      <Button asChild variant="outline" size="sm" className="h-8 text-xs sm:text-sm">
+                      <Button asChild variant="outline" size="sm" className="h-8 text-xs sm:text-sm border-purple-500 text-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20">
                         <a href={article.url} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                          पूरा पढ़ें <ExternalLink className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                          আরও পড়ুন <ExternalLink className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
                         </a>
                       </Button>
                     </CardFooter>
@@ -156,12 +156,12 @@ I. संक्रामक रोगों का प्रकोप:
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="mt-12"
               >
-                <Card>
+                <Card className="border-purple-900/30 bg-gray-900/50">
                   <CardHeader>
-                    <CardTitle>समाचार सारांश</CardTitle>
-                    <CardDescription>प्रमुख स्वास्थ्य रुझान और चिकित्सा निहितार्थ</CardDescription>
+                    <CardTitle className="text-purple-400">সংবাদ সারাংশ</CardTitle>
+                    <CardDescription className="text-gray-400">প্রধান স্বাস্থ্য প্রবণতা এবং চিকিৎসা সংক্রান্ত প্রভাব</CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="text-gray-300">
                     <div className="whitespace-pre-line">{summary}</div>
                   </CardContent>
                 </Card>

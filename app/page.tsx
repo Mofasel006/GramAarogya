@@ -6,12 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const translations = [
-  { lang: "English", text: "Your Health, Our Priority" },
-  { lang: "हिन्दी", text: "आपका स्वास्थ्य, हमारी प्राथमिकता" },
-  { lang: "ગુજરાતી", text: "તમારું સ્વાસ્થ્ય, અમારી પ્રાથમિકતા" },
-  { lang: "বাংলা", text: "আপনার স্বাস্থ্য, আমাদের অগ্রাধিকার" },
-  { lang: "मराठी", text: "तुमचे आरोग्य, आमची प्राधान्यता" },
-  { lang: "தமிழ்", text: "உங்கள் ஆரோக்கியம், எங்கள் முன்னுரிமை" },
+  { lang: "বাংলা", text: "মা সাথী এআই" },
 ];
 
 function FloatingPaths({ position }: { position: number }) {
@@ -82,21 +77,21 @@ export default function BackgroundPaths() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.8 }}
-              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-700/80 dark:from-white dark:to-white/80"
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400"
             >
               {translations[index].text}
             </motion.span>
           </h1>
 
           <div
-            className="inline-block group relative bg-gradient-to-b from-black/10 to-white/10 dark:from-white/10 dark:to-black/10 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="inline-block group relative bg-gradient-to-b from-purple-500/10 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/20 p-px rounded-2xl backdrop-blur-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <Link href="/hero">
               <Button
                 variant="ghost"
-                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-black dark:text-white transition-all duration-300 group-hover:-translate-y-0.5 border border-black/10 dark:border-white/10 hover:shadow-md dark:hover:shadow-neutral-800/50"
+                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md bg-white/95 hover:bg-white/100 dark:bg-black/95 dark:hover:bg-black/100 text-purple-600 dark:text-purple-400 transition-all duration-300 group-hover:-translate-y-0.5 border border-purple-500/20 hover:shadow-md dark:hover:shadow-purple-800/50"
               >
-                <span className="opacity-90 group-hover:opacity-100 transition-opacity">Discover Excellence</span>
+                <span className="opacity-90 group-hover:opacity-100 transition-opacity">শুরু করুন</span>
                 <span
                   className="ml-3 opacity-70 group-hover:opacity-100 group-hover:translate-x-1.5 transition-all duration-300"
                 >

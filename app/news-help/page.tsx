@@ -22,36 +22,6 @@ interface NewsResponse {
 
 const translations = [
   {
-    lang: "English",
-    heading: "Get Health News",
-    placeholder: "Select a language...",
-    buttonText: "Get News",
-    loadingText: "Fetching news...",
-    responseTitle: "News Results",
-    homeButtonText: "Back to Home",
-    readMore: "Read More",
-  },
-  {
-    lang: "हिन्दी",
-    heading: "स्वास्थ्य समाचार प्राप्त करें",
-    placeholder: "भाषा चुनें...",
-    buttonText: "समाचार प्राप्त करें",
-    loadingText: "समाचार लोड हो रहे हैं...",
-    responseTitle: "समाचार परिणाम",
-    homeButtonText: "होम पेज पर वापस जाएं",
-    readMore: "पूरा पढ़ें",
-  },
-  {
-    lang: "ગુજરાતી",
-    heading: "સ્વાસ્થ્ય સમાચાર મેળવો",
-    placeholder: "ભાષા પસંદ કરો...",
-    buttonText: "સમાચાર મેળવો",
-    loadingText: "સમાચાર લોડ થાય છે...",
-    responseTitle: "સમાચાર પરિણામો",
-    homeButtonText: "હોમ પેજ પર પાછા જાઓ",
-    readMore: "વધુ વાંચો",
-  },
-  {
     lang: "বাংলা",
     heading: "স্বাস্থ্য সংবাদ পান",
     placeholder: "একটি ভাষা নির্বাচন করুন...",
@@ -61,30 +31,10 @@ const translations = [
     homeButtonText: "হোম পেজে ফিরে যান",
     readMore: "আরও পড়ুন",
   },
-  {
-    lang: "मराठी",
-    heading: "आरोग्य बातम्या प्राप्त करा",
-    placeholder: "भाषा निवडा...",
-    buttonText: "बातम्या प्राप्त करा",
-    loadingText: "बातम्या लोड होत आहेत...",
-    responseTitle: "बातम्या परिणाम",
-    homeButtonText: "होम पेजवर परत जा",
-    readMore: "अधिक वाचा",
-  },
-  {
-    lang: "தமிழ்",
-    heading: "சுகாதார செய்திகளைப் பெறுங்கள்",
-    placeholder: "ஒரு மொழியைத் தேர்ந்தெடுக்கவும்...",
-    buttonText: "செய்திகளைப் பெறுங்கள்",
-    loadingText: "செய்திகள் ஏற்றப்படுகின்றன...",
-    responseTitle: "செய்தி முடிவுகள்",
-    homeButtonText: "முகப்பு பக்கத்திற்கு திரும்புக",
-    readMore: "மேலும் படிக்க",
-  },
 ];
 
 export default function NewsHelp() {
-  const [language, setLanguage] = useState("Hindi")
+  const [language, setLanguage] = useState("Bengali")
   const [apiResponse, setApiResponse] = useState<NewsResponse | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -93,30 +43,21 @@ export default function NewsHelp() {
   const router = useRouter()
 
   const languages = [
-    "Hindi",
-    "Marathi",
-    "Bengali",
-    "Tamil",
-    "Telugu",
-    "Gujarati",
-    "Punjabi",
-    "Malayalam",
-    "Kannada",
-    "Odia",
+    { name: "হিন্দি", value: "Hindi" },
+    { name: "মারাঠি", value: "Marathi" },
+    { name: "বাংলা", value: "Bengali" },
+    { name: "তামিল", value: "Tamil" },
+    { name: "তেলেগু", value: "Telugu" },
+    { name: "গুজরাটি", value: "Gujarati" },
+    { name: "পাঞ্জাবি", value: "Punjabi" },
+    { name: "মালায়ালম", value: "Malayalam" },
+    { name: "কন্নড়", value: "Kannada" },
+    { name: "ওড়িয়া", value: "Odia" },
   ]
 
   // Find the corresponding translation index based on the selected language
   useEffect(() => {
-    const langMap: Record<string, number> = {
-      "Hindi": 1,
-      "Marathi": 4,
-      "Bengali": 3,
-      "Tamil": 5,
-      "Gujarati": 2,
-      "English": 0
-    }
-    
-    setIndex(langMap[language] || 0)
+    setIndex(0)
   }, [language])
 
   const parseNewsResponse = (responseText: string) => {
@@ -151,7 +92,7 @@ export default function NewsHelp() {
       setArticles(parsedArticles)
     } catch (error) {
       console.error("Error parsing news response:", error)
-      setError("समाचार डेटा पार्स करने में त्रुटि हुई। कृपया पुनः प्रयास करें।")
+      setError("সংবাদ তথ্য পার্স করতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।")
     }
   }
 
@@ -161,7 +102,7 @@ export default function NewsHelp() {
 
     try {
       // Fetch news from the API
-      const res = await fetch("http://127.0.0.1:5000/news", {
+      const res = await fetch("http://localhost:5000/news", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ language }),
@@ -179,7 +120,7 @@ export default function NewsHelp() {
       }
     } catch (error) {
       console.error("Error fetching news:", error)
-      setError("समाचार प्राप्त करने में त्रुटि हुई। कृपया पुनः प्रयास करें।")
+      setError("সংবাদ পেতে সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।")
     } finally {
       setLoading(false)
     }
@@ -188,7 +129,7 @@ export default function NewsHelp() {
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString)
-      return new Intl.DateTimeFormat("hi-IN", {
+      return new Intl.DateTimeFormat("bn-IN", {
         year: "numeric",
         month: "long",
         day: "numeric",
@@ -209,12 +150,12 @@ export default function NewsHelp() {
   return (
     <div className="min-h-screen flex flex-col bg-black dark:bg-black text-white">
       <Navbar />
-      
+
       {/* Search Section - Fixed at Top */}
       <div className="bg-black dark:bg-black text-white py-8 px-4 shadow-md">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-bold text-white mb-6 text-center">{getTranslation("heading")}</h1>
-          
+
           <div className="flex flex-col md:flex-row gap-4 items-stretch">
             <div className="flex-1">
               <select
@@ -223,15 +164,15 @@ export default function NewsHelp() {
                 onChange={(e) => setLanguage(e.target.value)}
               >
                 {languages.map((lang, idx) => (
-                  <option key={idx} value={lang}>
-                    {lang}
+                  <option key={idx} value={lang.value}>
+                    {lang.name}
                   </option>
                 ))}
               </select>
             </div>
-            
+
             <Button
-              className="flex items-center justify-center gap-2 hover:bg-[#b9b9b9]"
+              className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white"
               onClick={handleGetNews}
               disabled={loading}
             >
@@ -241,7 +182,7 @@ export default function NewsHelp() {
           </div>
         </div>
       </div>
-      
+
       {/* Results Section - Expanded Area Below */}
       <div className="flex-grow dark:bg-black text-white px-4 py-8">
         <div className="max-w-6xl mx-auto">
@@ -259,28 +200,28 @@ export default function NewsHelp() {
               <h2 className="text-2xl font-semibold mb-6 text-white pb-2 border-b border-gray-700">
                 {translations[index].responseTitle}
               </h2>
-              
+
               {/* News Articles */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {articles.map((article, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className="bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 flex flex-col border border-gray-700"
                   >
-                    <h3 className="text-xl font-semibold text-blue-400 mb-2">{article.title}</h3>
+                    <h3 className="text-xl font-semibold text-purple-400 mb-2">{article.title}</h3>
                     <p className="text-gray-300 mb-3">{article.description}</p>
                     <p className="text-gray-400 mb-4 flex-grow">{article.content.substring(0, 150)}...</p>
-                    
+
                     <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
                       <span>{article.source}</span>
                       <span>{formatDate(article.date)}</span>
                     </div>
-                    
-                    <a 
-                      href={article.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-blue-400 hover:text-blue-300 font-medium text-sm inline-flex items-center"
+
+                    <a
+                      href={article.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-400 hover:text-purple-300 font-medium text-sm inline-flex items-center"
                     >
                       {translations[index].readMore}
                       <ExternalLink size={14} className="ml-1" />
@@ -301,20 +242,20 @@ export default function NewsHelp() {
           )}
         </div>
       </div>
-      
+
       {/* Back to Home Button */}
       <div className="dark:bg-black text-white pb-8 px-4">
         <div className="max-w-6xl mx-auto">
           <Button
             variant="outline"
-            className="flex items-center justify-center gap-2 hover:bg-[#b9b9b9]"
+            className="flex items-center justify-center gap-2 border-purple-500 text-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20"
             onClick={() => router.push("/")}
           >
             {getTranslation("homeButtonText")}
           </Button>
         </div>
       </div>
-      
+
       <Footer />
     </div>
   )

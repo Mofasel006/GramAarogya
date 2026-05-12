@@ -3,13 +3,11 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 
 const data = [
-  { year: 1960, mortalityRate: 242.1 },
-  { year: 1970, mortalityRate: 202.5 },
-  { year: 1980, mortalityRate: 167.5 },
-  { year: 1990, mortalityRate: 126.1 },
-  { year: 2000, mortalityRate: 91.8 },
-  { year: 2010, mortalityRate: 57.2 },
-  { year: 2020, mortalityRate: 34.3 },
+  { year: 1990, mortalityRate: 144 },
+  { year: 2000, mortalityRate: 88 },
+  { year: 2010, mortalityRate: 48 },
+  { year: 2020, mortalityRate: 28 },
+  { year: 2022, mortalityRate: 24 },
 ]
 
 export default function AreaChartComponent() {
@@ -24,11 +22,24 @@ export default function AreaChartComponent() {
           bottom: 0,
         }}
       >
+        <defs>
+          <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#9333ea" stopOpacity={0.8} />
+            <stop offset="95%" stopColor="#9333ea" stopOpacity={0} />
+          </linearGradient>
+        </defs>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="mortalityRate" stroke="#8884d8" fill="#8884d8" />
+        <Area
+          type="monotone"
+          dataKey="mortalityRate"
+          stroke="#9333ea"
+          fillOpacity={1}
+          fill="url(#colorRate)"
+          name="মৃত্যুহার"
+        />
       </AreaChart>
     </ResponsiveContainer>
   )

@@ -70,40 +70,41 @@ export default function GMap() {
   }
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center p-6 bg-gray-1000 text-white min-h-screen">
-      <Navbar className="fixed top-0 left-0 w-full bg-black shadow-md z-50" />
+    <div className="relative z-10 flex flex-col items-center justify-center p-4 sm:p-6 bg-background text-foreground min-h-screen">
+      <Navbar />
 
-      <h1 className="text-3xl font-bold mb-6 pt-20 text-white text-center">Accessible Healthcare Locations</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 pt-24 text-center bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+        নিকটস্থ স্বাস্থ্যসেবা কেন্দ্রসমূহ
+      </h1>
 
-      {error && <p className="text-red-500 mb-4">{error}</p>}
+      {error && <p className="text-destructive mb-4 text-sm font-medium bg-destructive/10 px-4 py-2 rounded-lg">{error}</p>}
 
-      <div className="mb-4">
-        <label htmlFor="facility-type" className="mr-2 text-white">
-          Select Facility Type:
+      <div className="mb-8 w-full max-w-md">
+        <label htmlFor="facility-type" className="block text-sm font-medium text-muted-foreground mb-2 text-center">
+          ধরণ নির্বাচন করুন
         </label>
         <select
           id="facility-type"
           value={selectedFacility}
           onChange={(e) => setSelectedFacility(e.target.value)}
-          className="p-2 border border-gray-700 rounded-lg bg-black text-white"
+          className="w-full p-2.5 border border-purple-100 dark:border-purple-900/30 rounded-xl bg-card text-foreground shadow-sm focus:ring-2 focus:ring-purple-500 outline-none transition-all"
         >
-          <option value="all">All Medical Facilities</option>
-          <option value="public">Public Health Center/Govt Hospitals</option>
-          <option value="private">Private Health Centers</option>
-          <option value="clinic">Doctor's Clinic</option>
-          <option value="medical">Medical Facilities</option>
+          <option value="all">সব ধরণের চিকিৎসা কেন্দ্র</option>
+          <option value="public">সরকারি স্বাস্থ্য কেন্দ্র/হাসপাতাল</option>
+          <option value="private">বেসরকারি স্বাস্থ্য কেন্দ্র</option>
+          <option value="clinic">ডাক্তার চেম্বার/ক্লিনিক</option>
+          <option value="medical">অন্যান্য চিকিৎসা কেন্দ্র</option>
         </select>
       </div>
 
-      {/* Update the map and places list for better responsiveness */}
-      <div className="flex flex-col md:flex-row w-full max-w-7xl mt-4 gap-4 sm:gap-6">
+      <div className="flex flex-col lg:flex-row w-full max-w-7xl mt-4 gap-6">
         {/* Map Section (Left) */}
         {isMounted && location && (
-          <div className="w-full md:w-[55%] h-[350px] sm:h-[450px] md:h-[550px] rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full lg:w-[60%] h-[350px] sm:h-[500px] rounded-2xl overflow-hidden shadow-xl border border-purple-100 dark:border-purple-900/30">
             <iframe
               width="100%"
               height="100%"
-              className="rounded-lg border border-gray-700 bg-black"
+              className="rounded-2xl"
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
@@ -113,39 +114,31 @@ export default function GMap() {
         )}
 
         {/* Places List (Right) */}
-        <div className="w-full md:w-[45%] h-[350px] sm:h-[450px] md:h-[550px] overflow-y-auto custom-scrollbar">
-          <ul className="space-y-3 sm:space-y-4 p-2 sm:p-4">
+        <div className="w-full lg:w-[40%] h-[400px] lg:h-[500px] overflow-y-auto custom-scrollbar pr-2">
+          <ul className="space-y-4">
             {places.map((place, index) => (
               <li
                 key={index}
-                className="border border-gray-700 p-3 sm:p-5 rounded-lg bg-black shadow-lg hover:shadow-xl transition-all"
+                className="border border-purple-100 dark:border-purple-900/20 p-4 rounded-xl bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md hover:border-purple-300 dark:hover:border-purple-700 transition-all group"
               >
-                <div className="flex flex-col">
-                  <strong className="text-base sm:text-lg md:text-xl font-semibold text-blue-400">{place.name}</strong>
-                  <p className="text-sm sm:text-base md:text-lg italic text-gray-300">{place.vicinity}</p>
-                  <p className="text-xs sm:text-sm text-gray-400">{place.distance.toFixed(2)} km away</p>
-
-                  {/* View on Google Maps Link */}
-                  <a
-                    href={place.mapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline mt-2 text-xs sm:text-sm"
-                  >
-                    View on Google Maps
-                  </a>
-
-                  {/* Visit Website Link (if available) */}
-                  {place.website && (
+                <div className="flex flex-col gap-1">
+                  <strong className="text-lg font-bold text-purple-600 dark:text-purple-400 group-hover:text-purple-700 transition-colors">
+                    {place.name}
+                  </strong>
+                  <p className="text-sm text-muted-foreground italic line-clamp-1">{place.vicinity}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-xs font-medium bg-purple-50 dark:bg-purple-900/30 text-purple-600 px-2 py-1 rounded-md">
+                      {place.distance.toFixed(2)} কি.মি. দূরে
+                    </span>
                     <a
-                      href={place.website}
+                      href={place.mapsLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-500 hover:underline mt-1 text-xs sm:text-sm"
+                      className="text-purple-600 dark:text-purple-400 hover:underline font-bold text-xs"
                     >
-                      Visit Website
+                      ম্যাপে দেখুন
                     </a>
-                  )}
+                  </div>
                 </div>
               </li>
             ))}
@@ -153,7 +146,7 @@ export default function GMap() {
         </div>
       </div>
 
-      <Footer className="w-full bg-black text-gray-400 mt-10" />
+      <Footer />
 
       <style jsx>{`
         /* Custom scrollbar styles */

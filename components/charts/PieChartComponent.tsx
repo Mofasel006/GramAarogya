@@ -3,15 +3,15 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts"
 
 const data = [
-  { name: "Cardiovascular Diseases", value: 28.1 },
-  { name: "Respiratory Diseases", value: 10.9 },
-  { name: "Diarrheal Diseases", value: 4.5 },
-  { name: "Tuberculosis", value: 3.1 },
-  { name: "Malaria", value: 1.9 },
-  { name: "Others", value: 51.5 },
+  { name: "হৃদরোগ", value: 30.5 },
+  { name: "শ্বাসকষ্ট জনিত রোগ", value: 15.2 },
+  { name: "মাতৃত্বকালীন জটিলতা", value: 12.8 },
+  { name: "ডায়াবেটিস", value: 10.4 },
+  { name: "শিশুর অপুষ্টি", value: 8.6 },
+  { name: "অন্যান্য", value: 22.5 },
 ]
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8", "#82CA9D"]
+const COLORS = ["#9333ea", "#ec4899", "#8b5cf6", "#d946ef", "#a855f7", "#64748b"]
 
 export default function PieChartComponent() {
   return (

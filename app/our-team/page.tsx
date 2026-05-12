@@ -9,8 +9,8 @@ import { Github, Linkedin, Mail, User, UserCircle } from "lucide-react"
 const teamMembers = [
   {
     name: "Siddharth Mishra",
-    role: "AI Developer",
-    bio: "Siddharth is a skilled AI developer with expertise in deep learning and natural language processing. He specializes in building AI-driven solutions for healthcare and automation.",
+    role: "এআই ডেভেলপার",
+    bio: "সিদ্ধার্থ একজন দক্ষ এআই ডেভেলপার যার ডিপ লার্নিং এবং ন্যাচারাল ল্যাঙ্গুয়েজ প্রসেসিংয়ে দক্ষতা রয়েছে। তিনি স্বাস্থ্যসেবা এবং অটোমেশনের জন্য এআই-চালিত সমাধান তৈরিতে বিশেষজ্ঞ।",
     links: {
       github: "https://github.com/Sid3503",
       linkedin: "https://www.linkedin.com/in/siddharth-mishra-0a5227228/",
@@ -19,8 +19,8 @@ const teamMembers = [
   },
   {
     name: "Manoday Kadam",
-    role: "AI Developer & Cloud Specialist",
-    bio: "Manoday is an AI developer with a strong background in cloud computing and scalable AI solutions. He excels in deploying AI models on cloud platforms for efficient real-world applications.",
+    role: "এআই ডেভেলপার ও ক্লাউড বিশেষজ্ঞ",
+    bio: "মনোদয় একজন এআই ডেভেলপার যার ক্লাউড কম্পিউটিং এবং স্কেলেবল এআই সমাধানে শক্তিশালী অভিজ্ঞতা রয়েছে। তিনি বাস্তব জীবনের প্রয়োগের জন্য ক্লাউড প্ল্যাটফর্মে এআই মডেল মোতায়েন করতে পারদর্শী।",
     links: {
       github: "https://github.com/Manoday10",
       linkedin: "https://www.linkedin.com/in/manoday-kadam-3b1a74268/",
@@ -29,8 +29,8 @@ const teamMembers = [
   },
   {
     name: "Prachiti Palande",
-    role: "UI/UX Specialist",
-    bio: "Prachiti is a creative UI/UX designer who focuses on crafting intuitive and engaging user experiences. She ensures that AI-powered applications are accessible and user-friendly.",
+    role: "ইউআই/ইউএক্স বিশেষজ্ঞ",
+    bio: "প্রাচিতি একজন সৃজনশীল ইউআই/ইউএক্স ডিজাইনার যিনি স্বজ্ঞাত এবং আকর্ষণীয় ব্যবহারকারীর অভিজ্ঞতা তৈরির দিকে মনোনিবেশ করেন। তিনি নিশ্চিত করেন যে এআই-চালিত অ্যাপ্লিকেশনগুলি ব্যবহারকারী-বান্ধব হয়।",
     links: {
       github: "https://github.com/mikejohnson",
       linkedin: "https://linkedin.com/in/mikejohnson",
@@ -39,8 +39,8 @@ const teamMembers = [
   },
   {
     name: "Priyadarshini Chavan",
-    role: "Frontend Designer & ML Specialist",
-    bio: "Priyadarshini is a frontend designer with a strong grasp of machine learning. She bridges the gap between AI models and user interfaces, ensuring seamless integration and performance.",
+    role: "ফ্রন্টেন্ড ডিজাইনার ও এমএল বিশেষজ্ঞ",
+    bio: "প্রিয়দর্শিনী একজন ফ্রন্টেন্ড ডিজাইনার যার মেশিন লার্নিংয়ে ভালো দখল রয়েছে। তিনি এআই মডেল এবং ইউজার ইন্টারফেসের মধ্যে সমন্বয় তৈরি করেন।",
     links: {
       github: "https://github.com/Priyadarshini75",
       linkedin: "https://www.linkedin.com/in/priyadarshinii/",
@@ -49,7 +49,7 @@ const teamMembers = [
   },
 ]
 
-const TeamMember = ({ member, index }) => {
+const TeamMember = ({ member, index }: { member: any, index: number }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -111,7 +111,7 @@ export default function OurTeam() {
           transition={{ duration: 0.5 }}
           className="text-4xl font-bold text-center mb-12"
         >
-          Our Team
+          আমাদের টিম
         </motion.h1>
         <section className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 bg-black">
           {isLoaded &&
@@ -123,12 +123,9 @@ export default function OurTeam() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-16"
         >
-          <h2 className="text-2xl font-semibold mb-4 pt-10">Our Vision</h2>
+          <h2 className="text-2xl font-semibold mb-4 pt-10">আমাদের লক্ষ্য</h2>
           <p className="text-gray-400">
-            At GramAarogya, we envision a world where quality healthcare is accessible to everyone, regardless of their
-            location or economic status. Our mission is to leverage cutting-edge technology to bridge the gap between
-            rural communities and healthcare professionals, ensuring that every individual has access to timely and
-            effective medical advice and support.
+            গ্রামআরোগ্যে আমরা এমন একটি বিশ্বের স্বপ্ন দেখি যেখানে গুণগত মানের স্বাস্থ্যসেবা সবার কাছে পৌঁছাবে, তাদের অবস্থান বা অর্থনৈতিক অবস্থা নির্বিশেষে। আমাদের মিশন হল আধুনিক প্রযুক্তি ব্যবহার করে গ্রামীণ জনগোষ্ঠী এবং স্বাস্থ্যসেবা পেশাদারদের মধ্যে দূরত্ব কমিয়ে আনা, যাতে প্রতিটি ব্যক্তি সঠিক সময়ে কার্যকর চিকিৎসা পরামর্শ এবং সহায়তা পেতে পারে।
           </p>
         </motion.section>
       </main>

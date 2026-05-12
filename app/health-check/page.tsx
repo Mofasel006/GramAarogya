@@ -7,20 +7,15 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
 const translations = [
-  { lang: "English", heading: "Health Check", placeholder: "Describe your symptoms..." },
-  { lang: "हिन्दी", heading: "स्वास्थ्य जाँच", placeholder: "अपने लक्षणों का वर्णन करें..." },
-  { lang: "ગુજરાતી", heading: "આરોગ્ય ચકાસણી", placeholder: "તમારા લક્ષણો વર્ણવો..." },
   { lang: "বাংলা", heading: "স্বাস্থ্য পরীক্ষা", placeholder: "আপনার উপসর্গ বর্ণনা করুন..." },
-  { lang: "मराठी", heading: "आरोग्य तपासणी", placeholder: "तुमच्या लक्षणांचे वर्णन करा..." },
-  { lang: "தமிழ்", heading: "ஆரோக்கிய சோதனை", placeholder: "உங்கள் அறிகுறிகளை விவரிக்கவும்..." },
 ]
 
 const loadingMessages = [
-  "Processing...",
-  "Analyzing symptoms...",
-  "Generating advice...",
-  "Almost there...",
-  "Fetching data...",
+  "প্রক্রিয়াকরণ হচ্ছে...",
+  "উপসর্গ বিশ্লেষণ করা হচ্ছে...",
+  "পরামর্শ তৈরি করা হচ্ছে...",
+  "প্রায় শেষ...",
+  "তথ্য সংগ্রহ করা হচ্ছে...",
 ]
 
 export default function HealthCheck() {
@@ -43,7 +38,7 @@ export default function HealthCheck() {
   }, [])
 
   useEffect(() => {
-    let interval
+    let interval: NodeJS.Timeout | undefined
     if (loading) {
       interval = setInterval(() => {
         setLoadingMessageIndex((prevIndex) => (prevIndex + 1) % loadingMessages.length)
@@ -51,7 +46,9 @@ export default function HealthCheck() {
         setCurrentMessage("")
       }, 3000)
     }
-    return () => clearInterval(interval)
+    return () => {
+      if (interval) clearInterval(interval)
+    }
   }, [loading])
 
   useEffect(() => {
@@ -78,18 +75,18 @@ export default function HealthCheck() {
     setSummary("")
 
     try {
-      const res = await fetch("http://127.0.0.1:5000/ask", {
+      const res = await fetch("http://localhost:5000/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: input }),
       })
 
       const data = await res.json()
-      setResponse(data.response || "No response available.")
-      setSummary(data.summary || "No detailed response available.")
+      setResponse(data.response || "কোনো প্রতিক্রিয়া পাওয়া যায়নি।")
+      setSummary(data.summary || "কোনো বিস্তারিত প্রতিক্রিয়া পাওয়া যায়নি।")
     } catch (error) {
       console.error("Error fetching response:", error)
-      setResponse("Error getting AI health advice.")
+      setResponse("এআই স্বাস্থ্য পরামর্শ পেতে সমস্যা হচ্ছে।")
     }
 
     setLoading(false)
@@ -113,19 +110,19 @@ export default function HealthCheck() {
             />
 
             <Button
-              className="w-full sm:w-auto mb-4 sm:mb-6 py-2 px-3 sm:px-4 bg-white text-black rounded-lg transition-all hover:bg-[#b9b9b9] text-sm sm:text-base"
+              className="w-full sm:w-auto mb-4 sm:mb-6 py-2 px-3 sm:px-4 bg-purple-600 text-white rounded-lg transition-all hover:bg-purple-700 text-sm sm:text-base"
               size="lg"
               onClick={handleSubmit}
               disabled={loading}
             >
-              {loading ? <span ref={messageRef}>{currentMessage}</span> : "Get AI Health Advice"}
+              {loading ? <span ref={messageRef}>{currentMessage}</span> : "এআই স্বাস্থ্য পরামর্শ নিন"}
             </Button>
 
             {loading && (
               <div className="flex justify-center items-center space-x-2 my-3 sm:my-4">
-                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full animate-bounce"></div>
-                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full animate-bounce delay-100"></div>
-                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full animate-bounce delay-200"></div>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-purple-500 rounded-full animate-bounce"></div>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-purple-500 rounded-full animate-bounce delay-100"></div>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-purple-500 rounded-full animate-bounce delay-200"></div>
               </div>
             )}
 
@@ -133,7 +130,7 @@ export default function HealthCheck() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
                 <div className="p-4 sm:p-6 bg-dark text-white rounded-lg w-full max-h-60 sm:max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
                   <h2 className="text-base sm:text-lg md:text-xl font-semibold pb-3 sm:pb-5">
-                    <strong>AI Response</strong>
+                    <strong>এআই প্রতিক্রিয়া</strong>
                   </h2>
                   <div className="space-y-2">
                     {response.split("\n").map((item, index) => (
@@ -148,7 +145,7 @@ export default function HealthCheck() {
                 </div>
                 <div className="p-4 sm:p-6 bg-dark text-white rounded-lg w-full max-h-60 sm:max-h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
                   <h2 className="text-base sm:text-lg md:text-xl font-semibold pb-3 sm:pb-5">
-                    <strong>Detailed Response</strong>
+                    <strong>বিস্তারিত প্রতিক্রিয়া</strong>
                   </h2>
                   <div className="text-xs sm:text-sm md:text-base whitespace-pre-wrap">{summary}</div>
                 </div>
@@ -157,18 +154,20 @@ export default function HealthCheck() {
 
             <div className="flex flex-col sm:flex-row sm:space-x-4 sm:space-y-0 space-y-3 sm:space-y-0 mt-4 sm:mt-6">
               <Button
-                className="w-full sm:w-auto py-2 px-3 sm:px-4 bg-white text-black rounded-lg transition-all hover:bg-[#b9b9b9] text-sm sm:text-base"
+                className="w-full sm:w-auto py-2 px-3 sm:px-4 border-purple-500 text-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-all text-sm sm:text-base"
+                variant="outline"
                 size="lg"
                 onClick={() => router.push("/find-doctor")}
               >
-                Find Doctors?
+                ডাক্তার খুঁজুন?
               </Button>
               <Button
-                className="w-full sm:w-auto py-2 px-3 sm:px-4 bg-white text-black rounded-lg transition-all hover:bg-[#b9b9b9] text-sm sm:text-base"
+                className="w-full sm:w-auto py-2 px-3 sm:px-4 border-purple-500 text-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-lg transition-all text-sm sm:text-base"
+                variant="outline"
                 size="lg"
                 onClick={() => router.push("/")}
               >
-                Back to Home
+                হোমে ফিরে যান
               </Button>
             </div>
           </div>
