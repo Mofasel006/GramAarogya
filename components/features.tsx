@@ -31,9 +31,6 @@ export default function Features() {
   return (
     <section className="container px-4 space-y-12 py-16 sm:py-24 md:py-32">
       <div className="mx-auto max-w-[58rem] text-center">
-        <h2 className="font-bold text-3xl leading-[1.2] sm:text-4xl md:text-5xl bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-          মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত
-        </h2>
         <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
           মা সাথী এআই-এর আধুনিক চিকিৎসা সমাধান, বহুভাষিক সহায়তা এবং স্বাস্থ্যসেবা পেশাদারদের তাৎক্ষণিক ব্যবহারের সুযোগের মাধ্যমে মায়েদের জীবনকে আরও নিরাপদ ও সহজ করা।
         </p>

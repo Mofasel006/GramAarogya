@@ -35,9 +35,8 @@ export default function Hero() {
               className="space-y-4"
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-tight">
-                মাতৃত্বকালীন স্বাস্থ্যসেবায় <br />
                 <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-                  নতুন দিগন্ত
+                  মা সাথী এআই
                 </span>
               </h1>
 
@@ -80,8 +79,8 @@ export default function Hero() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-100 dark:border-purple-900/20">
               <img
-                src="https://raw.githubusercontent.com/Mofasel006/MaSathi-AI-Assets/main/maasathi_mockup.jpg"
-                alt="MaaSathi AI - মাতৃত্বকালীন স্বাস্থ্যসেবা"
+                src="/logo.svg"
+                alt="MaaSathi AI"
                 className="w-full h-auto object-contain"
                 onError={(e) => {
                   e.currentTarget.src = "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=2070&auto=format&fit=crop";

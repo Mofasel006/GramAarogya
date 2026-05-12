@@ -31,9 +31,7 @@ export default function Navbar() {
     >
       <div className="container flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="w-9 h-9 bg-purple-600 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform shadow-md shadow-purple-500/20">
-            <HeartPulse className="text-white h-5 w-5" />
-          </div>
+          <img src="/logo.svg" alt="মা সাথী এআই Logo" className="w-10 h-10 object-contain group-hover:scale-105 transition-transform" />
           <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
             মা সাথী এআই
           </span>

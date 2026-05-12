@@ -109,15 +109,7 @@ export default function BackgroundPaths() {
             </motion.span>
           </h1>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mb-6 text-xl sm:text-2xl font-semibold text-neutral-700 dark:text-neutral-300 leading-relaxed"
-          >
-            মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত
-          </motion.p>
+          {/* Subtitle removed */}
 
           {/* Description */}
           <motion.p
@@ -186,8 +178,8 @@ export default function BackgroundPaths() {
             {/* Decorative top bar */}
             <div className="h-1.5 w-full bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500" />
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PSHrMbZGsmnlffL4eyCirTOsGaxZ1P.png"
-              alt="MaaSathi AI - মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত"
+              src="/logo.svg"
+              alt="MaaSathi AI"
               width={800}
               height={1000}
               className="w-full h-auto object-contain"
