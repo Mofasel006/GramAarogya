@@ -11,19 +11,18 @@ import { HealthConditionsChart } from "@/components/charts/HealthConditionsChart
 import { HealthcareAccessMap } from "@/components/charts/HealthcareAccessMap"
 import { LifeExpectancyTrend } from "@/components/charts/LifeExpectancyTrend"
 import { ChildMortalityRate } from "@/components/charts/ChildMortalityRate"
-import Image from "next/image"
 import { Globe } from "lucide-react"
 
 type Language = "bn" | "en"
 
 const translations = {
   bn: {
-    title: "স্বাস্থ্য অন্তর্দৃষ্টি: বাংলাদেশের শহর ও গ্রামের বৈষম্য",
+    title: "স্বাস্থ্য অন্তর্দৃষ্টি",
+    subtitle: "বাংলাদেশের শহর ও গ্রামের স্বাস্থ্যসেবা বৈষম্য",
     urbanRural: "শহর-গ্রাম",
     conditions: "স্বাস্থ্যগত অবস্থা",
     lifeExpectancy: "গড় আয়ু",
     childMortality: "শিশু মৃত্যুহার",
-    infographics: "ইনফোগ্রাফিক্স",
     keyPoints: "মূল বিষয়সমূহ",
     points: [
       "বাংলাদেশের শহর ও গ্রামীণ এলাকার স্বাস্থ্য ফলাফলে উল্লেখযোগ্য বৈষম্য বিদ্যমান।",
@@ -34,12 +33,12 @@ const translations = {
     ]
   },
   en: {
-    title: "Health Insights: Urban-Rural Disparity in Bangladesh",
+    title: "Health Insights",
+    subtitle: "Healthcare Disparities in Urban & Rural Bangladesh",
     urbanRural: "Urban-Rural",
     conditions: "Health Conditions",
     lifeExpectancy: "Life Expectancy",
     childMortality: "Child Mortality",
-    infographics: "Infographics",
     keyPoints: "Key Points",
     points: [
       "Significant disparities exist in health outcomes between urban and rural areas in Bangladesh.",
@@ -74,17 +73,22 @@ export default function HealthInsights() {
           </button>
         </div>
 
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent"
+          className="text-center mb-10"
         >
-          {t.title}
-        </motion.h1>
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent mb-3">
+            {t.title}
+          </h1>
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">
+            {t.subtitle}
+          </p>
+        </motion.div>
 
         <Tabs defaultValue="disparity" className="w-full" onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1 bg-purple-900/20">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 gap-1 bg-purple-900/20">
             <TabsTrigger value="disparity" className="text-xs sm:text-sm data-[state=active]:bg-purple-600 data-[state=active]:text-white">
               {t.urbanRural}
             </TabsTrigger>
@@ -96,9 +100,6 @@ export default function HealthInsights() {
             </TabsTrigger>
             <TabsTrigger value="child-mortality" className="text-xs sm:text-sm data-[state=active]:bg-purple-600 data-[state=active]:text-white">
               {t.childMortality}
-            </TabsTrigger>
-            <TabsTrigger value="infographics" className="text-xs sm:text-sm data-[state=active]:bg-purple-600 data-[state=active]:text-white">
-              {t.infographics}
             </TabsTrigger>
           </TabsList>
           <TabsContent value="disparity">
@@ -155,51 +156,7 @@ export default function HealthInsights() {
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="infographics">
-            <div className="space-y-6">
-              <Card className="border-purple-900/30 overflow-hidden">
-                <CardHeader>
-                  <CardTitle className="text-purple-400">
-                    {language === "bn" ? "স্বাস্থ্য বৈষম্য ইনফোগ্রাফিক" : "Health Disparity Infographic"}
-                  </CardTitle>
-                  <CardDescription className="text-gray-400">
-                    {language === "bn" ? "বাংলাদেশের শহর ও গ্রামের স্বাস্থ্যসেবা পরিস্থিতি" : "Healthcare situation in urban & rural Bangladesh"}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="rounded-xl overflow-hidden shadow-xl"
-                    >
-                      <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-S0vmqqRXHjWopIDPyXmxqWvHzHYvf6.png"
-                        alt="Health Insights Infographic - Vertical"
-                        width={800}
-                        height={1200}
-                        className="w-full h-auto"
-                      />
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1 }}
-                      className="rounded-xl overflow-hidden shadow-xl"
-                    >
-                      <Image
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ZfddUxqypAafSYUTTCZGh3MtUnWmTM.png"
-                        alt="Health Insights Infographic - Horizontal"
-                        width={800}
-                        height={600}
-                        className="w-full h-auto"
-                      />
-                    </motion.div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
+
         </Tabs>
 
         <motion.section

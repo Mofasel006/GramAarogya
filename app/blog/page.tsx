@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { BookOpen, Clock, Bookmark, Search, ChevronRight, Globe, Heart, Baby, Brain, Apple, Activity, Shield, Lightbulb, X, Check } from "lucide-react"
+import { BookOpen, Clock, Bookmark, Search, ChevronRight, Globe, Heart, Baby, Brain, Apple, Activity, Shield, Lightbulb, Check } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import Image from "next/image"
@@ -20,9 +20,6 @@ const translations = {
     latestPosts: "সাম্প্রতিক পোস্ট",
     readMore: "আরও পড়ুন",
     minRead: "মিনিট পড়ুন",
-    mythVsFact: "ভুল ধারণা vs সত্য",
-    mythLabel: "ভুল ধারণা (Myth)",
-    factLabel: "সত্য (Fact)",
     offlineAccess: "অফলাইন অ্যাক্সেস",
     offlineDesc: "ব্লগগুলো ডাউনলোড করা হয়েছে। এখন আপনি ইন্টারনেট ছাড়াই পড়তে পারবেন।",
     viewOffline: "অফলাইন ব্লগ দেখুন",
@@ -91,16 +88,6 @@ const translations = {
         readTime: 6,
         image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400"
       }
-    ],
-    myths: [
-      {
-        myth: "গর্ভাবস্থায় পেঁপে খেলে বাচ্চার ক্ষতি হয়।",
-        fact: "পরিমিত পরিমাণে পাকা পেঁপে খেলে কোনো ক্ষতি হয় না, এটি উপকারী।"
-      },
-      {
-        myth: "গর্ভাবস্থায় ব্যায়াম করা উচিত নয়।",
-        fact: "হালকা ব্যায়াম গর্ভাবস্থায় অত্যন্ত উপকারী এবং ডাক্তাররা এটি সুপারিশ করেন।"
-      }
     ]
   },
   en: {
@@ -113,9 +100,6 @@ const translations = {
     latestPosts: "Latest Posts",
     readMore: "Read More",
     minRead: "min read",
-    mythVsFact: "Myth vs Fact",
-    mythLabel: "Myth",
-    factLabel: "Fact",
     offlineAccess: "Offline Access",
     offlineDesc: "Blogs have been downloaded. You can now read without internet.",
     viewOffline: "View Offline Blogs",
@@ -183,16 +167,6 @@ const translations = {
         category: "babyDev",
         readTime: 6,
         image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400"
-      }
-    ],
-    myths: [
-      {
-        myth: "Eating papaya during pregnancy harms the baby.",
-        fact: "Eating ripe papaya in moderation is not harmful and is actually beneficial."
-      },
-      {
-        myth: "Exercise should be avoided during pregnancy.",
-        fact: "Light exercise is very beneficial during pregnancy and is recommended by doctors."
       }
     ]
   }
@@ -380,50 +354,6 @@ export default function BlogPage() {
                   </div>
                 </div>
               </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Myth vs Fact Section */}
-      <section className="px-4 sm:px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-2 text-center">{t.mythVsFact}</h2>
-          <p className="text-gray-400 text-center mb-8">
-            {language === "bn" ? "ভুল ধারণা ভাঙুন, সঠিক তথ্য জানুন" : "Break misconceptions, know the truth"}
-          </p>
-          
-          <div className="space-y-6">
-            {t.myths.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                {/* Myth Card */}
-                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-1.5 rounded-full bg-red-500">
-                      <X className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="font-semibold text-red-400">{t.mythLabel}</span>
-                  </div>
-                  <p className="text-gray-300">{item.myth}</p>
-                </div>
-
-                {/* Fact Card */}
-                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-5">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="p-1.5 rounded-full bg-green-500">
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="font-semibold text-green-400">{t.factLabel}</span>
-                  </div>
-                  <p className="text-gray-300">{item.fact}</p>
-                </div>
-              </motion.div>
             ))}
           </div>
         </div>
