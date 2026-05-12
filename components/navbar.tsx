@@ -38,7 +38,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navbar Links */}
-        <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
           <Link href="/health-check" className="text-muted-foreground hover:text-purple-600 transition-colors">
             আরোগ্য এআই
           </Link>
@@ -53,6 +53,9 @@ export default function Navbar() {
           </Link>
           <Link href="/health-insights" className="text-muted-foreground hover:text-purple-600 transition-colors">
             আরোগ্যভিউ
+          </Link>
+          <Link href="/blog" className="text-muted-foreground hover:text-purple-600 transition-colors">
+            আরোগ্যব্লগ
           </Link>
         </nav>
 
@@ -98,6 +101,9 @@ export default function Navbar() {
               </Link>
               <Link href="/health-insights" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
                 আরোগ্যভিউ
+              </Link>
+              <Link href="/blog" className="text-lg font-medium py-2 hover:text-purple-600" onClick={() => setDropdownOpen(false)}>
+                আরোগ্যব্লগ
               </Link>
               <Button
                 className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-full py-6 mt-4"
