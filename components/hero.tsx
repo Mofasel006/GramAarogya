@@ -22,9 +22,9 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-16">
+    <section className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-24 sm:pt-28">
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 py-8 lg:py-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 py-6 lg:py-10">
 
           {/* Content Column */}
           <div className="flex-1 text-center lg:text-left space-y-6 max-w-xl">
