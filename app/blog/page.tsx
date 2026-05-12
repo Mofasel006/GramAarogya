@@ -401,32 +401,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* App Features Showcase */}
-      <section className="px-4 sm:px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-2 text-center">
-            {language === "bn" ? "আমাদের অ্যাপ ফিচারস" : "Our App Features"}
-          </h2>
-          <p className="text-gray-400 text-center mb-8">
-            {language === "bn" ? "সম্পূর্ণ স্বাস্থ্যসেবা প্ল্যাটফর্ম" : "Complete Healthcare Platform"}
-          </p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="rounded-2xl overflow-hidden shadow-xl border border-gray-700/50"
-          >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qhQ4QjeUNcWVDHe3iRU6aJlgwEQHXT.png"
-              alt="App Features Showcase"
-              width={1200}
-              height={800}
-              className="w-full h-auto"
-            />
-          </motion.div>
-        </div>
-      </section>
-
       {/* Offline Access Card */}
       <section className="px-4 sm:px-6 py-12">
         <div className="max-w-md mx-auto">
