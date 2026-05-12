@@ -22,9 +22,9 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-16">
+    <section className="relative min-h-[90vh] w-full overflow-hidden bg-background pt-24 sm:pt-28">
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 py-8 lg:py-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 py-6 lg:py-10">
 
           {/* Content Column */}
           <div className="flex-1 text-center lg:text-left space-y-6 max-w-xl">
@@ -72,19 +72,16 @@ export default function Hero() {
 
           {/* Image Column - Highlighting the User's Image */}
           <motion.div
-            className="flex-1 w-full max-w-[550px]"
+            className="flex-1 w-full max-w-2xl"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-100 dark:border-purple-900/20">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-pink-100 dark:border-pink-900/20">
               <img
-                src="/logo.svg"
-                alt="MaaSathi AI"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-PoJqWk35MfuK5m7ureyf2K0Yt0Skw3.png"
+                alt="মা সাথী AI - মাতৃত্বকালীন স্বাস্থ্যসেবায় নতুন দিগন্ত"
                 className="w-full h-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?q=80&w=2070&auto=format&fit=crop";
-                }}
               />
             </div>
           </motion.div>

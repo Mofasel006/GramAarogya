@@ -85,9 +85,11 @@ I. সংক্রামক রোগের প্রকোপ:
   }
 
   return (
-    <div className="min-h-screen bg-black dark:bg-black text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white">
       <Navbar />
-      <main className="container mx-auto px-4 py-12">
+      {/* Spacer for fixed navbar */}
+      <div className="pt-20 sm:pt-24" />
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}

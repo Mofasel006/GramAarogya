@@ -94,9 +94,11 @@ export default function HealthCheck() {
 
   return (
     <>
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black">
         <Navbar />
-        <section className="container mx-auto px-4 py-8">
+        {/* Spacer for fixed navbar */}
+        <div className="pt-20 sm:pt-24" />
+        <section className="container mx-auto px-4 py-6 sm:py-8">
           <div className="max-w-5xl mx-auto bg-dark shadow-lg rounded-lg p-4 sm:p-6 md:p-8">
             <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-4 sm:mb-6">
               {translations[index].heading}
